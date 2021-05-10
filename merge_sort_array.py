@@ -40,7 +40,7 @@ def merge_sort(my_array):
 # This is because the list is being split in log(n) calls and the merging
 # process takes linear time in each call.
 
-# merge sort uses more spacevut less time 
+# merge sort uses more space but less time 
 
 
 my_array = [54, 26, 93, 17, 77, 31, 44, 55, 20]
