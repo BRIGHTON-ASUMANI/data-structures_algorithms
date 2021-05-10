@@ -36,6 +36,12 @@ def merge_sort(my_array):
             j += 1
             k += 1
 
+# The algorithm works in O(n.logn).
+# This is because the list is being split in log(n) calls and the merging
+# process takes linear time in each call.
+
+# merge sort uses more spacevut less time 
+
 
 my_array = [54, 26, 93, 17, 77, 31, 44, 55, 20]
 mergeSort(my_array)
