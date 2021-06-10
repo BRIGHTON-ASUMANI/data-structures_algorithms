@@ -5,11 +5,11 @@ class MinStack():
         self.min_element_stack = []
 
     def push(self, item):
-        if self.size() == 0:
+        if self.is_empty():
             self.min_element_stack.append(item)
         else:
-            self.min_element_stack.append(
-                min(self.min_element_stack[self.size() - 1], item))
+            min_element = min(self.min_element_stack[self.size() - 1], item)
+            self.min_element_stack.append(min_element)
         self.element_stack.append(item)
 
     def pop(self):
@@ -18,7 +18,7 @@ class MinStack():
         self.min_element_stack.pop()
         return self.element_stack.pop()
 
-    def top(self) -> int:
+    def top(self):
         return self.element_stack[-1]
 
     def getMin(self):
@@ -27,7 +27,7 @@ class MinStack():
         return self.min_element_stack[self.size() - 1]
 
     def is_empty(self):
-        return self.size() == 0
+        return not self.size()
 
     def size(self):
         return len(self.element_stack)

@@ -10,11 +10,13 @@ def linear_search(array, value):
 
 # Ordered array linear search
 def ordered_linear_search(array, value):
-    for i in array:
-        if i == value:
+    for num in array:
+        if num == value:
             return value
-        elif i > value:
+
+        elif num > value:
             break
+       
     return None
 
 
