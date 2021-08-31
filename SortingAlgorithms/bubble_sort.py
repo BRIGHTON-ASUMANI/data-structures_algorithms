@@ -8,6 +8,13 @@ them.
 
 Therefore, in Big O Notation, we would say that Bubble Sort has an
 efficiency of O(N*N) which is also referred to as quadratic time.
+
+- Space complexity: O(1)
+- Best case performance: O(n)
+- Average case performance: O(n*n)
+- Worst case performance: O(n*n)
+- Stable: Yes
+
 '''
 
 

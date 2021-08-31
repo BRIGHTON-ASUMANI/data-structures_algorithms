@@ -4,7 +4,7 @@
 
 def duplicates_in_array(arr):
     '''
-    This fucntion checks if an array contains duplicates using hashmaps
+    This function checks if an array contains duplicates using hashmaps
     '''
     freq = {}
 
