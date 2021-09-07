@@ -1,0 +1,154 @@
+class Linter
+attr_reader :error
+def initialize
+# We use a simple array to serve as our stack:
+@stack = []
+end
+def lint(text)
+# We start a loop which reads each character in our text:
+text.each_char.with_index do |char, index|
+if opening_brace?(char)
+# If the character is an opening brace, we push it onto the stack:
+@stack.push(char)
+elsif closing_brace?(char)
+if closes_most_recent_opening_brace?(char)
+# If the character closes the most recent opening brace,
+# we pop the opening brace from our stack:
+@stack.pop
+else # if the character does NOT close the most recent opening brace
+@error = "Incorrect closing brace: #{char} at index #{index}"
+return
+endend
+end
+if @stack.any?
+# If we get to the end of line, and the stack isn't empty, that means
+# we have an opening brace without a corresponding closing brace:
+@error = "#{@stack.last} does not have a closing brace"
+end
+end
+private
+def opening_brace?(char)
+["(", "[", "{"].include?(char)
+end
+def closing_brace?(char)
+[")", "]", "}"].include?(char)
+end
+def opening_brace_of(char)
+{")" => "(", "]" => "[", "}" => "{"}[char]
+end
+def most_recent_opening_brace
+@stack.last
+end
+def closes_most_recent_opening_brace?(char)
+opening_brace_of(char) == most_recent_opening_brace
+end
+end
+
+
+
+
+class PrintManager
+def initialize
+@queue = []
+end
+def queue_print_job(document)
+@queue.push(document)
+end
+def run
+while @queue.any?
+# the Ruby shift method removes and returns the
+# first element of an array:
+print(@queue.shift)
+end
+end
+private
+def print(document)
+# Code to run the actual printer goes here.
+# For demo purposes, we'll print to the terminal:
+puts document
+end
+end
+
+
+Hasmaps
+
+function countVotes(votes) {
+var tally = {};
+for(var i = 0; i < votes.length; i++) {
+if(tally[votes[i]]) {
+tally[votes[i]]++;
+} else {
+tally[votes[i]] = 1;
+}
+}
+return tally;
+}
+
+
+
+
+RECURSION
+
+def factorial(number)
+    if number == 1
+        return 1
+    return number * factorial(number - 1)
+
+
+function countdown(number) {
+    console.log(number);
+    if(number === 0) {
+        return;
+    } else {
+        countdown(number - 1);
+    }
+    }
+countdown(10);
+
+Recursion in the Eyes of the Computer
+If you think about our factorial method, you’ll realize when we call
+factorial(3) , the following happens:
+The computer calls factorial(3) , and before the method is complete, it calls
+factorial(2) , and before factorial(2) is complete, it calls factorial(1) . Technically,
+while the computer runs factorial(1) , it’s still in the middle of factorial(2) ,
+which in turn is running within factorial(3) .
+The computer uses a stack to keep track of which functions it’s in the
+middle of calling. This stack is known, appropriately enough, as the call
+stack.
+Let’s watch the call stack in action using the factorial example.
+The computer begins by calling factorial(3) . Before the method completes
+executing, however, factorial(2) gets called. In order to track that the
+computer is still in the middle of factorial(3) , the computer pushes that info
+onto a call stack:
+The computer then proceeds to execute factorial(2) . Now, factorial(2) , in turn,
+calls factorial(1) . Before the computer dives into factorial(1) , though, the
+computer needs to remember that it’s still in the middle of factorial(2) , so it
+pushes that onto the call stack as well:The computer then executes factorial(1) . Since 1 is the base case, factorial(1)
+completes without the factorial method again.
+Even after the computer completes factorial(1) , it knows that it’s not finished
+with everything it needs to do since there’s data in the call stack, which
+indicates that it is still in the middle of running other methods that it needs
+to complete. As you will recall, stacks are restricted in that we can only
+inspect the top (in other words, the final) element. So the next thing the
+computer does is peek at the top element of the call stack, which currently
+is factorial(2) .
+Since factorial(2) is the last item in the call stack, that means that factorial(2) is
+the most recently called method and therefore the immediate method that
+needs to be completed.
+The computer then pops factorial(2) from the call stack
+and completes running factorial(2) .
+Then the computer looks at the call stack to see which method it needs to
+complete next, and since the call stack is currently
+it pops factorial(3) from the stack and completes it.
+At this point, the stack is empty, so the computer knows it’s done executing
+all of the methods, and the recursion is complete.Looking back at this example from a bird’s-eye view, you’ll see that the
+order in which the computer calculates the factorial of 3 is as follows:
+1. factorial(3) is called first.
+2. factorial(2) is called second.
+3. factorial(1) is called third.
+4. factorial(1) is completed first.
+5. factorial(2) is completed based on the result of factorial(1) .
+6. Finally, factorial(3) is completed based on the result of factorial(2) .
+Interestingly, in the case of infinite recursion (such as the very first example
+in our chapter), the program keeps on pushing the same method over and
+over again onto the call stack, until there’s no more room in the
