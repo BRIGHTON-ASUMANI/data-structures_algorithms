@@ -21,7 +21,7 @@ def duplicates_in_array(arr):
 # The above funcion can be simplified to this below
 def duplicates_in_array_2(arr):
     '''
-    This fucntion checks if an array contains duplicates using hashmaps
+    This function checks if an array contains duplicates using hashmaps
     '''  
     for num in arr:
         if arr.count(num) > 1:

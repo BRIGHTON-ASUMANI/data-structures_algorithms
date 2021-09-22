@@ -41,11 +41,11 @@ def delete(valueToDelete, node):
         if node.leftChild is None:
             return node.rightChild
         # (If the current node has no left OR right child, this ends up# being None as per the first line of code in this function.)
-    elif node.rightChild is None:
-        return node.leftChild
-    # If the current node has two children, we delete the current node
-    # by calling the lift function (below), which changes the current node's
-    # value to the value of its successor node:
+        elif node.rightChild is None:
+            return node.leftChild
+        # If the current node has two children, we delete the current node
+        # by calling the lift function (below), which changes the current node's
+        # value to the value of its successor node:
     else:
         node.rightChild = lift(node.rightChild, node)
         return node
