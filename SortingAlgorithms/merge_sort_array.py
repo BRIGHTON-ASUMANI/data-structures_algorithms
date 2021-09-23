@@ -2,7 +2,7 @@ def merge_sort(my_array):
     if len(my_array) > 1:
         # Check if length of array is greater than 1
         # Divide the the array into two and escape remainder
-        mid_array = len(my_array) // 2
+        mid = len(my_array) // 2
         left_side = my_array[:mid]
         right_side = my_array[mid:]
 
@@ -47,3 +47,96 @@ merge sort uses more space but less time
 
 my_array = [54, 26, 93, 17, 77, 31, 44, 55, 20]
 mergeSort(my_array)
+
+
+# MergeSort in Python
+
+
+def mergeSort(array):
+    if len(array) > 1:
+
+        #  r is the point where the array is divided into two subarrays
+        r = len(array)//2
+        L = array[:r]
+        M = array[r:]
+
+        # Sort the two halves
+        mergeSort(L)
+        mergeSort(M)
+
+        i = j = k = 0
+
+        # Until we reach either end of either L or M, pick larger among
+        # elements L and M and place them in the correct position at A[p..r]
+        while i < len(L) and j < len(M):
+            if L[i] < M[j]:
+                array[k] = L[i]
+                i += 1
+            else:
+                array[k] = M[j]
+                j += 1
+            k += 1
+
+        # When we run out of elements in either L or M,
+        # pick up the remaining elements and put in A[p..r]
+        while i < len(L):
+            array[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(M):
+            array[k] = M[j]
+            j += 1
+            k += 1
+
+
+# Print the array
+def printList(array):
+    for i in range(len(array)):
+        print(array[i], end=" ")
+    print()
+
+
+# Driver program
+if __name__ == '__main__':
+    array = [6, 5, 12, 10, 9, 1]
+
+    mergeSort(array)
+
+    print("Sorted array is: ")
+    printList(array)
+
+
+def merge(left, right, compare):
+    result = []
+    i, j = 0, 0
+    while (i < len(left) and j < len(right)):
+        if compare(left[i], right[j]):
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    while (i < len(left)):
+        result.append(left[i])
+        i += 1
+    while (j < len(right)):
+        result.append(right[j])
+        j += 1
+    return result
+
+
+def merge_sort(arr, compare=lambda x, y: x < y):
+    # Used lambda function to sort array in both(increasing and decresing) order.
+    # By default it sorts array in increasing order
+    if len(arr) < 2:
+        return arr[:]
+    else:
+        middle = len(arr) // 2
+        left = merge_sort(arr[:middle], compare)
+        right = merge_sort(arr[middle:], compare)
+        return merge(left, right, compare)
+
+
+arr = [2, 1, 4, 5, 3]
+print(merge_sort(arr))
