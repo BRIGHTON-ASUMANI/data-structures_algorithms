@@ -25,6 +25,7 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = nxt
+        # head = prev
         return prev
 
 

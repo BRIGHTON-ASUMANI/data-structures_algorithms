@@ -58,3 +58,17 @@ class Solution:
 Time complexity : O(n+n)=O(n).
 Space complexity : O(n+n)=O(n). set needs space for the elements in
 '''
+
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+# O(N) or O(N*log(N))
+
+
+def solution(A):
+    # write your code in Python 3.6
+    output = 0
+    for i in A:
+        output ^= i
+
+    return output
