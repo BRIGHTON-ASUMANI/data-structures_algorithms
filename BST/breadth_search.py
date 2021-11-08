@@ -20,12 +20,44 @@ class Tree:
 def bfs(root):
     queue = [root]
     i = 0
+    result = []
     while i < len(queue):
-        poppedNode = queue[i]
+        current = queue[i]
         i += 1
-        if poppedNode is None:
+        if current is None:
             continue
         else:
-            print(poppedNode.data)
-            queue.append(poppedNode.left)
-            queue.append(poppedNode.right)
+            result.append(current.val)
+            queue.append(current.left)
+            queue.append(current.right)
+    return result
+
+
+
+# class Node:
+#   def __init__(self, val):
+#     self.val = val
+#     self.left = None
+#     self.right = None
+from collections import deque
+
+def breadth_first_values(root):
+  if not root:
+    return []
+  
+  queue = deque([ root ])
+  values = []
+  
+  while queue:
+    node = queue.popleft()
+    
+    values.append(node.val)
+    
+    if node.left:
+      queue.append(node.left)
+      
+    if node.right:
+      queue.append(node.right)
+      
+  return values
+
