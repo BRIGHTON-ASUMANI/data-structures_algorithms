@@ -238,7 +238,7 @@ def insert(root, item):
     temp = Node(0)
     temp.data = item
     temp.next = root
-root = temp
+    root = temp
     return root
  
 def display(root):
