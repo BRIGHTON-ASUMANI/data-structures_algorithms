@@ -1,5 +1,7 @@
 '''
 https://leetcode.com/problems/linked-list-cycle/
+
+https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem?isFullScreen=true
 '''
 
 # Definition for singly-linked list.
