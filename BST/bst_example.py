@@ -43,7 +43,7 @@ def minValueNode(node):
     current = node
 
     # Find the leftmost leaf
-    while(current.left is not None):
+    while (current.left is not None):
         current = current.left
 
     return current
@@ -59,7 +59,7 @@ def deleteNode(root, key):
     # Find the node to be deleted
     if key < root.key:
         root.left = deleteNode(root.left, key)
-    elif(key > root.key):
+    elif (key > root.key):
         root.right = deleteNode(root.right, key)
     else:
         # If the node is with only one child or no child

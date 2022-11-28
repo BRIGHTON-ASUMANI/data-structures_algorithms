@@ -23,6 +23,8 @@ class Tree:
 # Insert Node
 
 # Print the Tree
+
+
 def PrintTree(self):
     if self.left:
         self.left.PrintTree()
@@ -61,7 +63,7 @@ def dfsPreorder(root):
 def dfsInorder(root):
     res = []
     if root:
-        res = dfsInorder(root.left)
+        res = res + dfsInorder(root.left)
         res.append(root.data)
         res = res + dfsInorder(root.right)
     return res
@@ -70,8 +72,8 @@ def dfsInorder(root):
 def dfsPostorder(root):
     res = []
     if root:
-        res = dfsPostorder(root.left)
-        res = dfsPostorder(root.right)
+        res = res + dfsPostorder(root.left)
+        res = res + dfsPostorder(root.right)
         res.append(root.data)
     return res
 
